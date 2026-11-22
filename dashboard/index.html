@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied launch value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="sweep" aria-hidden="true"></span><div><h1>TOKEN RADAR</h1><p id="subtitle">Pre-token protocols, ranked by implied launch value</p></div></div>
+  <div class="meta"><span id="asof"></span><span id="model"></span></div>
+</header>
+<section class="kpis" id="kpis" aria-label="Headline figures"></section>
+<section class="toolbar" aria-label="Filters">
+  <input id="q" type="search" placeholder="Search name, slug or category" aria-label="Search">
+  <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+  <select id="chain" aria-label="Chain"><option value="">All chains</option></select>
+  <select id="band" aria-label="TVL band">
+    <option value="">Any TVL</option>
+    <option value="big">TVL $1B and up</option>
+    <option value="mid">TVL $100M – $1B</option>
+    <option value="small">TVL under $100M</option>
+  </select>
+  <select id="sort" aria-label="Sort by">
+    <option value="implied">Sort: implied value</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="growth">Sort: 7-day growth</option>
+    <option value="age">Sort: age</option>
+    <option value="name">Sort: name</option>
+  </select>
+  <button id="reset" type="button">Reset</button>
+</section>
+<main>
+  <div class="tablewrap">
+    <table id="board">
+      <thead><tr>
+        <th data-k="rank">#</th><th data-k="name">Protocol</th><th data-k="category">Category</th>
+        <th data-k="chains">Chains</th><th data-k="tvl" class="num">TVL</th><th data-k="rel" class="num">vs cat.</th><th data-k="growth" class="num">7d</th>
+        <th data-k="age" class="num">Age</th><th data-k="implied" class="num">Implied value</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="pager"><span id="count"></span><span class="sp"></span>
+      <button id="prev" type="button">‹ Prev</button><button id="next" type="button">Next ›</button></div>
+  </div>
+  <aside id="detail" class="detail" aria-label="Protocol detail" hidden></aside>
+</main>
+<section class="live">
+  <h2>Already trading — not ranked</h2>
+  <p>These protocols record a token, so the board shows the market's own capitalisation instead of a model's implied value. They are set apart, never mixed into the ranking.</p>
+  <table id="livetab"><thead><tr><th>Protocol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">7d</th></tr></thead><tbody id="liverows"></tbody></table>
+</section>
+<footer>
+  <p id="method"></p>
+  <p>Every row records no token — the snapshot's record, not proof. Implied value is this radar's own claim, never a prediction of a launch. Snapshot: DefiLlama protocols, fetched once and frozen.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
